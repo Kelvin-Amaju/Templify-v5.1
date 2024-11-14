@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templify V1.0</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon">
+</head>
+<body class="bg-gray-900">
+
+<nav class="bg-white shadow sticky top-0 z-30 bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-30">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Your Company</span>
+              <img class="h-8 w-auto" src="assets/img/templify.png" alt="">
+            </a>
+          </div>
+            
+        <div class="hidden md:flex space-x-4 font-bold">
+            <a href="#" class="text-gray-100 hover:text-blue-600 px-4">Home</a>
+            <a href="product-page.html" class="text-gray-100 hover:text-blue-600 px-4">Products</a>
+            <a href="cartpage.html" class="text-gray-200 hover:text-gray-300 bg-gray-800 rounded-2xl sm:w-auto sm:mb-0 px-4"><svg width="25" height="25" viewBox="0 0 24 24" class="inline-block mb-1">
+                <path fill="currentColor" d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.16 14h9.58l.84-4H6.5l.66-3h11.68l.74 4-1.5.5H8.16l-.84 4h.84zM6 2h2.4L9 6H5L4 2h2z"></path>
+            </svg><span id="cart-count">0</span></a>
+            <button id="login-btn" class="text-sm/6 font-semibold text-gray-100">Log in <span aria-hidden="true">&rarr;</span></button>
+        </div>
+        <button id="menu-btn" class="md:hidden text-gray-100 hover:text-blue-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- Off-Canvas Menu -->
+<div id="offcanvas-menu" class="fixed inset-0 bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-30 z-50 hidden">
+    <!-- Off-canvas menu content goes here -->
+    <div class="flex justify-end p-4">
+        <button id="close-menu" class="text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="flex flex-col items-center justify-center h-full font-bold animate-fadeIn">
+        <a href="#" class="text-white text-2xl py-2">Home</a>
+        <a href="product-page.html" class="text-white text-2xl py-2">Products</a>
+        <a href="cartpage.html" class="text-white text-2xl py-2">Cart (<span id="cart-count">0</span>)</a>
+        <button id="login-btn-offcanvas" class="text-white text-2xl font-bold py-2">Login</button>
+        <div class="mb-4 space-x-0 md:space-x-2 md:mb-8">
+            <a href="#_" class="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-green-400 rounded-2xl sm:w-auto sm:mb-0">
+                Log In
+                <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg bg-gray-100 rounded-2xl sm:w-auto sm:mb-0">
+                Sign Up
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+    
+
+      
+      <!--Hero1-->
+
+      <div class="bg-gray-900">
+      
+        <div class="relative isolate px-6 pt-14 lg:px-8">
+          <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+          </div>
+          <div class="mx-auto max-w-2xl py-40 sm:py-46 lg:py-40">
+            <div class="w-full bg-indigo-600 text-white text-center rounded-md px-5 py-2">
+                <h3> Psst! We’ve got editable templates too, check them out </h3> <span><a href="#" class="text-sm/6 font-semibold text-gray-100">Learn more <span aria-hidden="true">→</span></a></span>
+                
+            </div>
+            
+            <div class="text-center">
+              <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-100 sm:text-7xl">Discover & Download Quality Templates</h1>
+              <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">The best place to find templates for all your needs, from business to personal use.</p>
+              <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a href="#Popular" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Browse Templates</a>
+                <a href="#" class="text-sm/6 font-semibold text-gray-100">Learn more <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+            <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enhanced Hero Section -->
+      <section class="bg-cover bg-center bg-fixed py-32" style="background-image: url('assets/img/pic2.jpg');">
+        <div class="bg-indigo-900 backdrop-filter backdrop-blur-lg bg-opacity-30 p-10 rounded-lg max-w-xl mx-auto text-center text-white">
+            <h2 class="text-4xl font-bold" id="carousel-heading">Discover the Latest Templates in Modern Languages</h2>
+            <p class="mt-4" id="carousel-text">Find everything you need, from the latest frontends to essential backeds.</p>
+            <a href="#Popular" class="mt-6 inline-block bg-gray-700 text-white py-2 px-4 rounded hover:bg-blue-600">Explore Categories</a>
+        </div>
+    </section>
+ 
+    <section>
+
+    </section>
+
+    <section id="Popular" class="bg-gray-900 py-16">
+        <div class="container mx-auto px-6">
+          <h2 class="text-2xl font-bold text-center text-gray-200 mb-12">Popular Templates</h2>
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="bg-gray-820 rounded-lg shadow-md overflow-hidden">
+                <img 
+                  src=assets/img/pic1.jpg 
+                  alt={template.title} 
+                  width=400
+                  height=300 
+                  class="w-full h-48 object-cover" 
+                />
+                <div class="p-6">
+                  <h3 class="text-md font-semibold mb-2"></h3>
+                  <p class="text-gray-400 text-sm mb-4"></p>
+                  <button class="mr-2 rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                    View Template
+                  </button>
+                  <a href="https://github.com/learning-zone/website-templates.git">
+                    <button class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                        Download
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div class="bg-gray-820 rounded-lg shadow-md overflow-hidden">
+                <img 
+                  src=assets/img/pic2.jpg
+                  alt=Business Header 
+                  width=400
+                  height=300 
+                  class="w-full h-48 object-cover" 
+                />
+                <div class="p-6">
+                  <h3 class="text-md font-semibold mb-2"></h3>
+                  <p class="text-gray-400 text-sm mb-4"></p>
+                  <button class="mr-2 rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                    View Template
+                  </button>
+                  <a href="https://github.com/davidjpfeiffer/gh-pages-template.git">
+                    <button class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                        Download
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div class="bg-gray-820 rounded-lg shadow-md overflow-hidden">
+                <img 
+                  src=assets/img/pic3.jpg 
+                  alt={template.title} 
+                  width=400
+                  height=300 
+                  class="w-full h-48 object-cover" 
+                />
+                <div class="p-6">
+                  <h3 class="text-md font-semibold mb-2"></h3>
+                  <p class="text-gray-400 text-sm mb-4"></p>
+                  <button class="mr-2 rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                    View Template
+                  </button>
+                  <a href="https://github.com/davidjpfeiffer/gh-pages-template.git">
+                    <button class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                        Download
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div class="bg-gray-820 rounded-lg shadow-md overflow-hidden">
+                <img 
+                  src=assets/img/pic4.jpg  
+                  alt={template.title} 
+                  width=400
+                  height=300 
+                  class="w-full h-48 object-cover" 
+                />
+                <div class="p-6">
+                  <h3 class="text-md font-semibold mb-2"></h3>
+                  <p class="text-gray-400 text-sm mb-4"></p>
+                  <button class="mr-2 rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                    View Template
+                  </button>
+                  <a href="https://github.com/davidjpfeiffer/gh-pages-template.git">
+                    <button class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                        Download
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div class="bg-gray-820 rounded-lg shadow-md overflow-hidden">
+                <img 
+                  src=assets/img/pic5.jpg  
+                  alt={template.title} 
+                  width=400
+                  height=300 
+                  class="w-full h-48 object-cover" 
+                />
+                <div class="p-6">
+                  <h3 class="text-md font-semibold mb-2"></h3>
+                  <p class="text-gray-400 text-sm mb-4"></p>
+                  <button class="mr-2 rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                    View Template
+                  </button>
+                  <a href="https://github.com/davidjpfeiffer/gh-pages-template.git">
+                    <button class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                        Download
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div class="bg-gray-820 rounded-lg shadow-md overflow-hidden">
+                <img 
+                  src=assets/img/pic6.jpg  
+                  alt={template.title} 
+                  width=400
+                  height=300 
+                  class="w-full h-48 object-cover" 
+                />
+                <div class="p-6">
+                  <h3 class="text-md font-semibold mb-2"></h3>
+                  <p class="text-gray-400 text-sm mb-4"></p>
+                  <button class="mr-2 rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                    View Template
+                  </button>
+                  <button class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-5 focus-visible:outline-offset-5 focus-visible:outline-gray-200">
+                    Download
+                  </button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+    
+
+
+    <!--Footer-->
+
+    <footer class="bg-gray-900 text-gray-300 py-8">
+      <div class="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <div class="flex text-center space-x-2"> 
+                <img
+                  alt=""
+                  src="/templify.png"
+                  class="h-6 w-auto"
+                /> <h3 class="text-lg font-semibold text-white"> Templify</h3>
+            </div>
+              
+            <p class="mt-2 text-sm -mx-3 block rounded-lg px-3 py-2.5 text-gray-50 bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+              Your one-stop platform for premium high-quality templates, designed to meet your every need. 
+              Download, customize, and enhance your projects with ease.
+            </p>
+            <p class="mt-2 text-sm font-semibold -mx-3 block rounded-lg px-3 py-2.5 text-gray-50 bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                Other details to be filled later - This is just to fill space and beautify the footer
+                Other details to be filled later - This is just to fill space and beautify the footer
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white">Quick Links</h3>
+            <ul class="mt-2 space-y-2 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+              <li>
+                <a href="/about" class="hover:text-indigo-500 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                  Templates
+                </a>
+              </li>
+              <li>
+                <a href="/contact" class="hover:text-indigo-500 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="/pricing" class="hover:text-indigo-500 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a href="/faq" class="hover:text-indigo-500 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                  FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white">Resources</h3>
+            <ul class="mt-2 space-y-2 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+              <li>
+                <a href="/blog" class="hover:text-indigo-500 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="/templates" class="hover:text-indigo-500 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                  Templates
+                </a>
+              </li>
+              <li>
+                <a href="/guides" class="hover:text-indigo-500 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                  Guides
+                </a>
+              </li>
+              <li>
+                <a href="/Reviews" class="hover:text-indigo-500 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+                  User Reviews
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white">Follow Us</h3>
+            <div class="">
+              <ul class="mt-2 space-y-2 -mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">
+              <li>
+              <a href="https://facebook.com" class="hover:text-indigo-500">
+                <span class="-mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">Facebook</span>
+                
+              </a>
+              </li>
+              <li>
+              <a href="https://twitter.com" class="hover:text-indigo-500">
+                <span class="-mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">Twitter</span>
+            
+              </a>
+              </li>
+              <li>
+              <a href="https://linkedin.com" class="hover:text-indigo-500">
+                <span class="-mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">LinkedIn</span>
+                
+              </a>
+              </li>
+              <li>
+              <a href="https://instagram.com" class="hover:text-indigo-500">
+                <span class="-mx-3 block rounded-lg px-3 py-2.5 text-sm text-gray-50 hover:bg-gray-900 backdrop-filter backdrop-blur-lg bg-opacity-20">Instagram</span>
+                
+              </a>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-300 mt-8 pt-6 text-center text-sm">
+          <p>&copy; 2024 Templify. All rights reserved.</p>
+          <p class='text-xs text-indigo-500'>Created By Pine Network.</p>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+        section.bg-cover {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+          }
+
+          .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+          }
+          
+          .fade-out {
+            opacity: 1;
+            animation: fadeOut 1.5s forwards;
+          }
+          
+          @keyframes fadeIn {
+            to {
+              opacity: 1;
+            }
+          }
+          
+          @keyframes fadeOut {
+            to {
+              opacity: 0;
+            }
+          }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const messages = [
+                {
+                    heading: "Discover the Latest Templates in Modern Languages",
+                    text: "Find everything you need, from the latest frontends to essential backends."
+                },
+                {
+                    heading: "Unbeatable Black Friday Deals",
+                    text: "From Nov 1st – 30th, grab amazing discounts on top templates."
+                },
+                {
+                    heading: "Tech Gifts for the Holidays",
+                    text: "Find the perfect gift for tech lovers this season."
+                }
+            ];
+        
+            let currentIndex = 0;
+            const headingElement = document.getElementById("carousel-heading");
+            const textElement = document.getElementById("carousel-text");
+        
+            function updateMessage() {
+                headingElement.classList.remove("fade-in");
+                textElement.classList.remove("fade-in");
+        
+                headingElement.classList.add("fade-out");
+                textElement.classList.add("fade-out");
+        
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % messages.length;
+        
+                    headingElement.textContent = messages[currentIndex].heading;
+                    textElement.textContent = messages[currentIndex].text;
+        
+                    headingElement.classList.remove("fade-out");
+                    textElement.classList.remove("fade-out");
+        
+                    headingElement.classList.add("fade-in");
+                    textElement.classList.add("fade-in");
+                }, 1500);
+            }
+        
+            setInterval(updateMessage, 5000);
+        });
+        </script>
+        
+    
+
+    
+
+    <script>
+        
+        // Simulate loading time
+        /*$(window).on('load', function() {
+            $('#loading').fadeOut(3000, function() {
+                $('#main-content').fadeIn(3000);
+            });
+        });*/
+
+        // Open off-canvas menu
+        document.getElementById('menu-btn').onclick = function() {
+            document.getElementById('offcanvas-menu').classList.remove('hidden');
+        }
+
+        // Close off-canvas menu
+        document.getElementById('close-menu').onclick = function() {
+            document.getElementById('offcanvas-menu').classList.add('hidden');
+        }
+
+        //Carousel
+        $(document).ready(function(){
+            $('.carousel').slick({
+                dots: true, // Show dots for navigation
+                infinite: true, // Infinite looping
+                speed: 500, // Transition speed
+                slidesToShow: 1, // Number of slides to show
+                slidesToScroll: 1, // Number of slides to scroll
+                autoplay: true, // Enable autoplay
+                autoplaySpeed: 3000, // Autoplay speed
+            });
+        });
+
+        //Drawer
+        document.getElementById('open-drawer-btn').addEventListener('click', () => {
+            document.getElementById('drawer').classList.remove('translate-y-full');
+        });
+  
+        document.getElementById('close-drawer-btn').addEventListener('click', () => {
+            document.getElementById('drawer').classList.add('translate-y-full');
+        });
+    
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/script.js"></script>
+    <script src="assets/tailwind.config.js"></script>
+      
+</body>
+</html>
