@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+</head>
+<body>
+    <div class="card">
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>V</li>
+            <li>E</li>
+            <li>R</li>
+        </ul>
+    </div>
+    <!--<div class="text">
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>V</li>
+            <li>E</li>
+            <li>R</li>
+        </ul>
+    </div>-->
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            color: transparent;
+            transition: 1s ease-in-out;
+            border-right: groove 2px violet;
+        }
+
+        body .card:hover {
+            border-right: groove 25px violet;
+            transition: 1s ease-out;
+            color: white;
+        }
+
+        .card li {
+            text-align: right;
+            padding: 10px;
+            list-style: none;
+            font-size: 30px;
+            transform: translateX(30px);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+    </style>
+</body>
+</html>
